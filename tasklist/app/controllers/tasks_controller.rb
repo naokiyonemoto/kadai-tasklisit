@@ -12,10 +12,10 @@ class TasksController < ApplicationController
     @task = Task.new(task_params)
     
     if @task.save
-      flash[:succes] = "タスクが記入されました。"
+      flash[:success] = 'Taskが正常に投稿されました'
       redirect_to @task
     else
-      flash.now[:danger] ="タスクが記入されませんでした。"
+      flash.now[:danger] = "Taskが投稿されませんでした"
       render :new
     end
   end
@@ -38,7 +38,6 @@ class TasksController < ApplicationController
   end
   
   def destroy
-    
     @task.destroy
     flash[:succes] = "タスクが更新されました。"
     redirect_to tasks_url
@@ -52,6 +51,6 @@ class TasksController < ApplicationController
   end
   
   def task_params
-    params.require(:task).permit(:content)
+    params.require(:task).permit(:content, :status)
   end
 end
